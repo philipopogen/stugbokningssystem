@@ -1,0 +1,22 @@
+<main class="main">
+    <h1 class="header-h1">Alla Bokningar</h1>
+    <div class="content">           
+                <div *ngFor="let bokning of bokningResponse" style="margin-bottom: 20px;" class="border-bottom">
+                    <div class="thumbnail">
+                        <img src="{{hamtaBild(bokning.stugaEntity.bilder[0])}}"
+                            alt="Description of the image">
+                    </div>
+                    <h1>{{bokning.stugaEntity.namn}}</h1>
+                    <p><span>{{bokning.stugaEntity.adress}}</span> <span> Rooms: {{bokning.stugaEntity.antalRum}}</span></p>
+                    <h1>Turist information</h1>
+                    <p><strong>Namn:</strong>{{bokning.turistNamn}}</p>
+                    <p><strong>E-post:</strong>{{bokning.turistEpost}}</p>
+                    <p><strong>Mobil nr:</strong>{{bokning.turistMobilnummer}}</p>
+                    <p><strong>incheckningsdatum:</strong>{{bokning.incheckningsdatum}}</p>
+                    <p><strong>utcheckningsdatum:</strong>{{bokning.utcheckningsdatum}}</p>
+                    <p><strong>Stuga namn:</strong>{{bokning.stugaEntity.namn}}</p>
+                    <p><strong>Stuga Antal rum:</strong>{{bokning.stugaEntity.antalRum}}</p>
+                    <p><strong>Stuga Ort:</strong>{{bokning.stugaEntity.ort}}</p>
+                </div>
+        </div>
+  </main>

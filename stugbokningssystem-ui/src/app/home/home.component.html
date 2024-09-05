@@ -1,0 +1,80 @@
+<div *ngIf="!visaBokningsForm && !bekraftelseResponse">
+    <h1 class="header-h1">Alla Stugor</h1>
+    <div *ngFor="let stuga of stugor" class="border-bottom card">
+        <div class="thumbnail">
+            <img src="{{hamtaBild(stuga.bilder[0])}}" alt="Description of the image">
+        </div>
+        <h1>{{stuga.namn}}</h1>
+        <p><strong>Beskrining:</strong>{{stuga.beskrivning}}</p>
+        <p><strong>Antar rum:</strong>{{stuga.antalRum}}</p>
+        <p><strong>Adress:</strong>{{stuga.adress}}</p>
+        <p><strong>Ort:</strong>{{stuga.ort}}</p>
+        <p><strong>Pris:</strong>{{stuga.pris}}kr</p>
+        <div class="align-right">
+            <button mat-raised-button class="btn" (click)="openDialog(stuga.id)">Boka Stuga</button>
+        </div>
+    </div>
+</div>
+<div *ngIf="visaBokningsForm && !bekraftelseResponse">
+    <h1 class="header-h1">Fyll i dina uppgifter</h1>
+    <div class="card padding-small">
+        <div class="align-right">
+            <button mat-icon-button (click)="visaBokningar()">X</button>
+        </div>
+        <!-- Bokning Form -->
+        <form [formGroup]="bokastugaForm" (ngSubmit)="submitBokaStuga()">
+            <div>
+                <label for="incheckningsdatum">Incheckningsdatum/Tid</label>
+                <div class="col-2-grid">
+                    <input id="incheckningsdatum" name="incheckningsdatum" formControlName="incheckningsdatum"
+                        type="date" />
+                    <input id="incheckningstid" name="incheckningstid" formControlName="incheckningstid" type="time" />
+                </div>
+                <p class="error-color">{{getErrorMessage('incheckningsdatum')}}</p>
+                <p class="error-color">{{getErrorMessage('incheckningstid')}}</p>
+            </div>
+            <div>
+                <label for="utcheckningsdatum">Utcheckningsdatum</label>
+                <div class="col-2-grid">
+                    <input id="utcheckningsdatum" name="utcheckningsdatum" formControlName="utcheckningsdatum"
+                        type="date" />
+                    <input id="utcheckningstid" name="utcheckningstid" formControlName="utcheckningstid" type="time" />
+                </div>
+                <p class="error-color">{{getErrorMessage('utcheckningsdatum')}}</p>
+                <p class="error-color">{{getErrorMessage('utcheckningstid')}}</p>
+            </div>
+            <div>
+                <label for="turistNamn">Turist Namn</label>
+                <input id="turistNamn" name="turistNamn" formControlName="turistNamn" type="text" />
+                <p class="error-color">{{getErrorMessage('turistNamn')}}</p>
+            </div>
+            <div>
+                <label for="turistEpost">Turist Epost</label>
+                <input id="turistEpost" name="turistEpost" formControlName="turistEpost" type="email" />
+                <p class="error-color">{{getErrorMessage('turistEpost')}}</p>
+            </div>
+            <div>
+                <label for="turistMobilnummer">Turist Mobilnummer</label>
+                <input id="turistMobilnummer" name="turistMobilnummer" formControlName="turistMobilnummer"
+                    type="text" />
+                <p class="error-color">{{getErrorMessage('turistMobilnummer')}}</p>
+            </div>
+            <div>
+                <label for="turistAdress">Turist Adress</label>
+                <input id="turistAdress" name="turistAdress" formControlName="turistAdress" type="text" />
+                <p class="error-color">{{getErrorMessage('turistAdress')}}</p>
+            </div>
+            <div class="align-right margin-top-small">
+                <button type="submit" mat-raised-button class="btn">Boka nu</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div *ngIf="bekraftelseResponse">
+    <h1 class="header-h1">Tack för din bokning!</h1>
+    <p>{{bekraftelseResponse}}</p>
+    <div class="align-right">
+        <button type="button" mat-raised-button class="btn" (click)="visaBokningar()">Ok</button>
+    </div>
+</div>

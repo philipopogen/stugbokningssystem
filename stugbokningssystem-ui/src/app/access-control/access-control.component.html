@@ -1,0 +1,16 @@
+<main class="main">
+    <h1 class="header-h1">Request Access</h1>
+    <div class="content">            
+            <form [formGroup]="accessRequestForm">
+                    <label for="userId">Enter your userId</label>
+                    <input type="number" (keyup)="clearServerError()" name="userId" formControlName="userId" id="userId"
+                      placeholder="userid" required>
+                      <p class="error-color" *ngIf="serverErrorMessge">{{serverErrorMessge}}</p>  
+                    <p class="error-color">{{getErrorMessage('userId')}}</p>                     
+                <div class="align-right">
+                    <button type="button" (click)="submitAccessRequestForm()" mat-raised-button class="btn">Logga in</button>
+                </div>            
+            </form>
+        </div>
+  </main>
+

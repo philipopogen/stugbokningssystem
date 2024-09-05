@@ -1,0 +1,7 @@
+
+  .col-2-grid {
+    display: grid;
+    grid-template-columns: auto auto; /* Two columns with auto width */
+    gap: 10px;
+  }
+  

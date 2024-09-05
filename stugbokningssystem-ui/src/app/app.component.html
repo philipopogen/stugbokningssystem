@@ -1,0 +1,11 @@
+<mat-toolbar class="bg-blue">
+    <span [routerLink]="'/'" class="cursor-pointer">Stug.se</span>
+    <div class="spacer"></div>
+    <button mat-button [routerLink]="apllicationUrl.access_control">Admin</button>
+</mat-toolbar>
+
+<div class="center-container">
+    <div class="center-card">
+        <router-outlet />
+    </div>
+</div>
